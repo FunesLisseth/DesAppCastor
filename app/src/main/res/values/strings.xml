@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">DesAppCastor</string>
+
+
+    <string name="item_inicio">Inicio</string>
+
 </resources>
