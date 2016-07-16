@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">DesAppCastor</string>
+    <string name="title_activity_producto_detalle">Detalle de producto</string>
 </resources>
