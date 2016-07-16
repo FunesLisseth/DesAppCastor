@@ -16,28 +16,216 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Aglomerado Crudo - DURPLAC"
-        android:id="@+id/textView" />
+        android:id="@+id/textView"
+        android:textSize="@dimen/title_text_size"
+        android:textAlignment="center"
+        android:paddingBottom="@dimen/text_padding_vertical" />
 
     <ImageView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/ImageProduct"
-        android:maxHeight="800dp"/>
+        android:src="@drawable/image_product"
+        android:cropToPadding="false"
+        android:scaleType="fitStart"
+        android:adjustViewBounds="true"
+        android:paddingTop="@dimen/image_padding"
+        android:paddingBottom="@dimen/image_padding" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="$ 13.15"/>
+        android:text="$ 13.15"
+        android:paddingTop="@dimen/text_padding_vertical"
+        android:paddingBottom="@dimen/text_padding_vertical"
+        android:textSize="@dimen/text_size" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="S/. 45.56"/>
+        android:text="S/. 45.56"
+        android:textSize="@dimen/highlight_text_size"
+        android:paddingBottom="@dimen/text_padding_vertical"
+        android:paddingTop="@dimen/text_padding_vertical" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Tablero de particulas de madera de mediana densidad. Ideal para pintar y/o revestir con chapa de madera o laminados de alta presion. Usos: recomendado para fabricacion de muebles de interior en general."/>
+        android:text="Tablero de particulas de madera de mediana densidad. Ideal para pintar y/o revestir con chapa de madera o laminados de alta presion. Usos: recomendado para fabricacion de muebles de interior en general."
+        android:textSize="@dimen/text_size"
+        android:paddingTop="@dimen/text_padding_vertical"
+        android:paddingBottom="@dimen/text_padding_vertical" />
+
+
+    <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Peso Neto: "
+                    android:id="@+id/textView2"
+                    android:paddingTop="@dimen/text_padding_vertical"
+                    android:textSize="@dimen/text_size"
+                    android:paddingBottom="@dimen/text_padding_vertical" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="6.5 Kg"
+                    android:id="@+id/textView3"
+                    android:paddingTop="@dimen/text_padding_vertical"
+                    android:textSize="@dimen/text_size"
+                    android:paddingBottom="@dimen/text_padding_vertical" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+            android:layout_weight="1" android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Volumen: "
+                    android:id="@+id/textView4"
+                    android:paddingTop="@dimen/text_padding_vertical"
+                    android:textSize="@dimen/text_size"
+                    android:paddingBottom="@dimen/text_padding_vertical" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="3.3 mm"
+                    android:id="@+id/textView5"
+                    android:paddingTop="@dimen/text_padding_vertical"
+                    android:textSize="@dimen/text_size"
+                    android:paddingBottom="@dimen/text_padding_vertical" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Peso Bruto: "
+                    android:id="@+id/textView6"
+                    android:paddingTop="@dimen/text_padding_vertical"
+                    android:textSize="@dimen/text_size"
+                    android:paddingBottom="@dimen/text_padding_vertical" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="12.5 Kg"
+                    android:id="@+id/textView7"
+                    android:paddingTop="@dimen/text_padding_vertical"
+                    android:textSize="@dimen/text_size"
+                    android:paddingBottom="@dimen/text_padding_vertical" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+            android:layout_weight="1" android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="#00FF00"
+            android:paddingRight="90dp"
+            android:orientation="vertical" >
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#FF00FF"
+            android:orientation="vertical" >
+
+
+
+        </LinearLayout>
+
+
+
+
+    </LinearLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Agregar a carrito"
+        android:id="@+id/button1"
+        style="?android:attr/borderlessButtonStyle"
+        android:textAlignment="viewStart"
+        android:foreground="@drawable/abc_ic_arrow_drop_right_black_24dp"
+        android:foregroundGravity="center|right"
+        android:paddingLeft="@dimen/buttom_left_padding" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Productos similares"
+        android:id="@+id/button2"
+        style="?android:attr/borderlessButtonStyle"
+        android:textAlignment="viewStart"
+        android:foreground="@drawable/abc_ic_arrow_drop_right_black_24dp"
+        android:foregroundGravity="center|right"
+        android:paddingLeft="@dimen/buttom_left_padding" />
+
+
 
 
 </LinearLayout>
