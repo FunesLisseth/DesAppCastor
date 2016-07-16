@@ -34,6 +34,11 @@
             android:label="@string/product_detail_activity_label"
             android:parentActivityName=".ProductListActivity" />
 
+        <activity
+            android:name=".LoginActivity"
+            android:label="@string/product_detail_activity_label"
+            android:parentActivityName=".MainActivity" />
+
     </application>
 
 </manifest>

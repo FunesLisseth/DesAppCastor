@@ -94,6 +94,8 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_orders) {
 
         } else if (id == R.id.nav_login) {
+            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+            MainActivity.this.startActivity(intent);
 
         } else if (id == R.id.nav_recently_viewed) {
 
