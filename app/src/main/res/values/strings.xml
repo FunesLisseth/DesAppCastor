@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">DesAppCastor</string>
+<<<<<<< HEAD
     <string name="title_activity_producto_detalle">Detalle de producto</string>
+=======
+
+
+    <string name="item_inicio">Inicio</string>
+
+>>>>>>> cff251676ec4dfb7dda653a96e363af8b6ed9bb8
 </resources>
