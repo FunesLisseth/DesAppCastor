@@ -1,5 +1,10 @@
 <resources>
+
     <string name="app_name">Castor App</string>
+    <string name="category_product_activity_label">Categorias</string>
+    <string name="product_list_activity_label">Listado de productos</string>
+    <string name="product_detail_activity_label">Detalle de producto</string>
+
     <string name="title_activity_producto_detalle">Detalle de producto</string>
     <string name="item_inicio">Inicio</string>
     <string name="title_activity_main">Castor App</string>

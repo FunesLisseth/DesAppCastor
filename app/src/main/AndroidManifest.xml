@@ -8,7 +8,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ProductDetailActivity" />
+
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main"
@@ -19,6 +19,21 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".CategoryProductActivity"
+            android:label="@string/category_product_activity_label"
+            android:parentActivityName=".MainActivity" />
+
+        <activity android:name=".ProductListActivity"
+            android:label="@string/product_list_activity_label"
+            android:parentActivityName=".CategoryProductActivity"></activity>
+
+        <activity
+            android:name=".ProductDetailActivity"
+            android:label="@string/product_detail_activity_label"
+            android:parentActivityName=".ProductListActivity" />
+
     </application>
 
 </manifest>

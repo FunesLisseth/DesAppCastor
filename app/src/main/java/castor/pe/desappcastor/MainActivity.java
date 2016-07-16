@@ -1,5 +1,6 @@
 package castor.pe.desappcastor;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -79,20 +80,26 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-        /*
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
 
-        } else if (id == R.id.nav_slideshow) {
 
-        } else if (id == R.id.nav_manage) {
+        if (id == R.id.nav_home) {
 
-        } else if (id == R.id.nav_share) {
+        } else if (id == R.id.nav_category) {
 
-        } else if (id == R.id.nav_send) {
+            Intent intent = new Intent(MainActivity.this, CategoryProductActivity.class);
+            MainActivity.this.startActivity(intent);
 
-        }*/
+        } else if (id == R.id.nav_account) {
+
+        } else if (id == R.id.nav_orders) {
+
+        } else if (id == R.id.nav_login) {
+
+        } else if (id == R.id.nav_recently_viewed) {
+
+        } else if (id == R.id.nav_fav) {
+
+        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
