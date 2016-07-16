@@ -1,11 +1,11 @@
 <resources>
-    <string name="app_name">DesAppCastor</string>
-<<<<<<< HEAD
+    <string name="app_name">Castor App</string>
     <string name="title_activity_producto_detalle">Detalle de producto</string>
-=======
-
-
     <string name="item_inicio">Inicio</string>
+    <string name="title_activity_main">Castor App</string>
 
->>>>>>> cff251676ec4dfb7dda653a96e363af8b6ed9bb8
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
 </resources>

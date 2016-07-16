@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_home"
+            android:title="Inicio" />
+        <item
+            android:id="@+id/nav_category"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="Categorias" />
+    </group>
+
+    <item android:title="Communicate">
+   _     <menu>
+            <item
+                android:id="@+id/nav_account"
+                android:icon="@drawable/ic_account_circle_black_24dp"
+                android:title="Mi cuenta" />
+            <item
+                android:id="@+id/nav_orders"
+                android:icon="@drawable/ic_shopping_cart_24"
+                android:title="Mis pedidos" />
+            <item
+                android:id="@+id/nav_login"
+                android:icon="@drawable/ic_security"
+                android:title="Iniciar Sesión" />
+            <item
+                android:id="@+id/nav_recently_viewed"
+                android:icon="@drawable/ic_history"
+                android:title="Vistos recientemente" />
+            <item
+                android:id="@+id/nav_fav"
+                android:icon="@drawable/ic_heart"
+                android:title="Mis favoritos" />
+        </menu>
+    </item>
+
+</menu>
