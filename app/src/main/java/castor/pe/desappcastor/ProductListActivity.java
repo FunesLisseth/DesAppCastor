@@ -25,9 +25,10 @@ public class ProductListActivity extends AppCompatActivity {
 
         ListView categoriaListView = (ListView) findViewById(R.id.productsListView);
 
-        String[] items = { "Aglomerado crudo", "Aglomerado crudo", "Aglomerado crudo", "Aglomerado crudo", "Aglomerado crudo",
-                           "Aglomerado crudo", "Aglomerado crudo", "Aglomerado crudo", "Aglomerado crudo", "Aglomerado crudo",
-                           "Aglomerado crudo", "Aglomerado crudo", "Aglomerado crudo" };
+        String[] items = { "Servicio Corte Recto Tablero x Pza", "Servicio Corte Recto Tablero x Pza", "Serv.Canteado Fino Std xML (Promo)", "Serv.Canteado 3mm Std xML (Promo)",
+                        "Servicio Ranura Fondo Standard x ML", "Servicio Corte Recto Tablero x Pza  (Promo)", "Servicio Corte Recto Tablero x Pza", "Aster  Tornillo autoroscante ap/am/pzd  3.5x50mm",
+                        "Duraflex cantopvc  Blanco/1100 Std  0.4x22mm   (Promo Set. 2014)", "Maderba aglo mel  Laberinto sf2c 2140x2440x18mm", "Maderba aglo mel  Otoño sf2c 2140x2440x18mm",
+                        "Nordex hdf  Crudo 1520x2440x3.0mm", "Novopan MDP aglo  Crudo 2140x2440x15mm" };
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1, items);

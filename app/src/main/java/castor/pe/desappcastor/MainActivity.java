@@ -92,6 +92,8 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_account) {
 
         } else if (id == R.id.nav_orders) {
+            Intent intent = new Intent(MainActivity.this, CarritoActivity.class);
+            MainActivity.this.startActivity(intent);
 
         } else if (id == R.id.nav_login) {
             Intent intent = new Intent(MainActivity.this, LoginActivity.class);
