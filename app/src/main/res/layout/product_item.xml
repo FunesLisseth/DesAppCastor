@@ -25,20 +25,15 @@
             android:id="@+id/item_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/item_icon"
-            android:layout_alignBaseline="@+id/item_counter"
-            android:textSize="18dp" />
+            android:textSize="18dp"
+            android:text="Titulo"/>
 
         <TextView
             android:id="@+id/item_counter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/item_icon"
-            android:layout_alignBaseline="@+id/item_counter"
-            android:textSize="18dp" />
-
-
-
+            android:textSize="14dp"
+            android:text="Detalle de producto"/>
 
     </LinearLayout>
 

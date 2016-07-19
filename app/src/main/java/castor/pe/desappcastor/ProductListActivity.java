@@ -23,9 +23,9 @@ public class ProductListActivity extends AppCompatActivity {
 
         setupActionBar();
 
-        ListView categoriaListView = (ListView) findViewById(R.id.productsListView);
+        /*ListView categoriaListView = (ListView) findViewById(R.id.productsListView);
 
-        String[] items = { "Servicio Corte Recto Tablero x Pza", "Servicio Corte Recto Tablero x Pza", "Serv.Canteado Fino Std xML (Promo)", "Serv.Canteado 3mm Std xML (Promo)",
+        /*String[] items = { "Servicio Corte Recto Tablero x Pza", "Servicio Corte Recto Tablero x Pza", "Serv.Canteado Fino Std xML (Promo)", "Serv.Canteado 3mm Std xML (Promo)",
                         "Servicio Ranura Fondo Standard x ML", "Servicio Corte Recto Tablero x Pza  (Promo)", "Servicio Corte Recto Tablero x Pza", "Aster  Tornillo autoroscante ap/am/pzd  3.5x50mm",
                         "Duraflex cantopvc  Blanco/1100 Std  0.4x22mm   (Promo Set. 2014)", "Maderba aglo mel  Laberinto sf2c 2140x2440x18mm", "Maderba aglo mel  Otoño sf2c 2140x2440x18mm",
                         "Nordex hdf  Crudo 1520x2440x3.0mm", "Novopan MDP aglo  Crudo 2140x2440x15mm" };
@@ -46,22 +46,22 @@ public class ProductListActivity extends AppCompatActivity {
                 ProductListActivity.this.startActivity(intent);
 
             }
-        });
+        }); */
 
         //*/ 1. pass context and data to the custom adapter
-        //AdapterProduct adapter = new AdapterProduct(this, generateData());
+        AdapterProduct adapter = new AdapterProduct(this, generateData());
 
         // if extending Activity
         // 2. Get ListView from activity_main.xml
-        //ListView listView = (ListView) findViewById(R.id.listView);
+        ListView listView = (ListView) findViewById(R.id.productsListView);
 
         // 3. setListAdapter
-        //listView.setAdapter(adapter);
+        listView.setAdapter(adapter);
         //if extending Activity
-        //setListAdapter(adapter);*/
+        //setListAdapter(adapter);
     }
 
-    /*private ArrayList<Product> generateData(){
+    private ArrayList<Product> generateData(){
         ArrayList<Product> models = new ArrayList<Product>();
 
         models.add(new Product("Group Title"));
@@ -70,7 +70,7 @@ public class ProductListActivity extends AppCompatActivity {
         models.add(new Product(R.drawable.image_product_thumb,"Menu Item 3","12"));
 
         return models;
-    }*/
+    }
 
     private void setupActionBar() {
         ActionBar actionBar = getSupportActionBar();

@@ -8,12 +8,13 @@
             android:title="Inicio" />
         <item
             android:id="@+id/nav_category"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/ic_dashboard"
             android:title="Categorias" />
     </group>
 
-    <item android:title="Communicate">
-   _     <menu>
+    <!--<item android:title="Communicate">-->
+         <!--<menu>-->
+    <group android:checkableBehavior="single">
             <item
                 android:id="@+id/nav_account"
                 android:icon="@drawable/ic_account_circle_black_24dp"
@@ -34,7 +35,16 @@
                 android:id="@+id/nav_fav"
                 android:icon="@drawable/ic_heart"
                 android:title="Mis favoritos" />
-        </menu>
-    </item>
+        <item
+            android:id="@+id/nav_search"
+            android:icon="@drawable/ic_search"
+            android:title="Buscar productos" />
+        <item
+            android:id="@+id/nav_group"
+            android:icon="@drawable/ic_group"
+            android:title="Acerca de" />
+        </group>
+        <!--</menu>-->
+    <!--</item>-->
 
 </menu>

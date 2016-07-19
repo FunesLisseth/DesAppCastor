@@ -20,8 +20,7 @@ public class CarritoActivity extends AppCompatActivity {
         String[] items = { "Servicio Corte Recto Tablero x Pza", "Aster  Tornillo autoroscante ap/am/pzd  3.5x50mm", "Maderba aglo mel  Laberinto sf2c 2140x2440x18mm",
                             "Aglomerado crudo", "Aglomerado crudo",  "Masol Liston PinoRadiata Premium  1/C4  2x2\"x10.5'", "Nordex hdf pint  Blanco 1c 1520x2440x3.0mm"};
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, items);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, items);
 
         categoriaListView.setAdapter(adapter);
 

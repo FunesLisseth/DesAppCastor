@@ -35,8 +35,7 @@ public class AdapterProduct extends ArrayAdapter<Product> {
         // 2. Get rowView from inflater
 
         View rowView = null;
-
-        // if(!modelsArrayList.get(position).isGroupHeader()){
+        if(!modelsArrayList.get(position).isGroupHeader()){
             rowView = inflater.inflate(R.layout.product_item, parent, false);
 
             // 3. Get icon,title & counter views from the rowView
@@ -48,16 +47,16 @@ public class AdapterProduct extends ArrayAdapter<Product> {
             imgView.setImageResource(modelsArrayList.get(position).getIcon());
             titleView.setText(modelsArrayList.get(position).getTitle());
             counterView.setText(modelsArrayList.get(position).getCounter());
-        /*}
+        }
         else{
             rowView = inflater.inflate(R.layout.product_header, parent, false);
             TextView titleView = (TextView) rowView.findViewById(R.id.header);
-            //titleView.setText(modelsArrayList.get(position).getTitle());
+            titleView.setText(modelsArrayList.get(position).getTitle());
 
-
-        //} */
+        }
 
         // 5. retrn rowView
         return rowView;
     }
+
 }
