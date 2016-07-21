@@ -5,16 +5,18 @@
 
     <!-- icon -->
     <ImageView
-        android:id="@+id/item_icon"
-        android:layout_width="144dp"
-        android:layout_height="144dp"
+        android:id="@+id/productImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
         android:src="@drawable/image_product_thumb"
         android:scaleType="fitStart"
-        android:adjustViewBounds="true" />
+        android:adjustViewBounds="true"
+        android:layout_marginBottom="8dp"
+        android:maxWidth="140dp" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -22,18 +24,20 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/item_title"
+            android:id="@+id/productTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="18dp"
-            android:text="Titulo"/>
+            android:textSize="@dimen/cabecera_text_size"
+            android:text="Titulo"
+            android:paddingTop="@dimen/text_padding_vertical"
+            android:paddingBottom="@dimen/text_padding_vertical" />
 
         <TextView
-            android:id="@+id/item_counter"
+            android:id="@+id/productDetail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="14dp"
-            android:text="Detalle de producto"/>
+            android:textSize="@dimen/text_size"
+            android:text="Detalle de producto" />
 
     </LinearLayout>
 

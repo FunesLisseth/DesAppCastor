@@ -8,7 +8,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -53,21 +55,40 @@ public class ProductListActivity extends AppCompatActivity {
 
         // if extending Activity
         // 2. Get ListView from activity_main.xml
-        ListView listView = (ListView) findViewById(R.id.productsListView);
+        ListView productsListView = (ListView) findViewById(R.id.productsListView);
 
         // 3. setListAdapter
-        listView.setAdapter(adapter);
+        productsListView.setAdapter(adapter);
         //if extending Activity
         //setListAdapter(adapter);
+
+        productsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long arg3) {
+                view.setSelected(true);
+
+                if (position >= 1){
+                    TextView titleView = (TextView) view.findViewById(R.id.productTitle);
+
+                    Intent intent = new Intent(ProductListActivity.this, ProductDetailActivity.class);
+                    intent.putExtra("id", titleView.getTag().toString());
+                    ProductListActivity.this.startActivity(intent);
+                }
+
+            }
+        });
     }
 
     private ArrayList<Product> generateData(){
         ArrayList<Product> models = new ArrayList<Product>();
 
-        models.add(new Product("Group Title"));
-        models.add(new Product(R.drawable.image_product_thumb,"Menu Item 1","1"));
-        models.add(new Product(R.drawable.image_product_thumb,"Menu Item 2","2"));
-        models.add(new Product(R.drawable.image_product_thumb,"Menu Item 3","12"));
+        models.add(new Product("Categoria de producto"));
+        models.add(new Product(1,R.drawable.image_product_thumb,"Servicio de corte","Detalle de producto"));
+        models.add(new Product(2,R.drawable.image_product_thumb,"Novopan MDP aglo Crudo","Detalle de producto"));
+        models.add(new Product(3,R.drawable.image_product_thumb,"Duraflex cantopvc  Blanco","Detalle de producto"));
+        models.add(new Product(4,R.drawable.image_product_thumb,"Nordex hdf Crudo","Detalle de producto"));
+        models.add(new Product(5,R.drawable.image_product_thumb,"Aster  Tornillo autoroscante","Detalle de producto"));
 
         return models;
     }

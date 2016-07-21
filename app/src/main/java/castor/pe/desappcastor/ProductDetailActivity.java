@@ -13,7 +13,7 @@ public class ProductDetailActivity extends AppCompatActivity {
 
         String id = getIntent().getExtras().getString("id");
 
-        Toast.makeText(this, "OHHHH!!: " + id, Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "OHHHH!!: " + id, Toast.LENGTH_SHORT).show();
 
     }
 }

@@ -5,7 +5,7 @@
     <string name="product_list_activity_label">Listado de productos</string>
     <string name="product_detail_activity_label">Detalle de producto</string>
     <string name="login_activity_label">Iniciar sesión</string>
-    <string name="carrito_activity_label">Mis pedidos (carrito)</string>
+    <string name="carrito_activity_label">Mi carrito</string>
     <string name="group_activity_label">Acerca de</string>
 
     <string name="title_activity_producto_detalle">Detalle de producto</string>

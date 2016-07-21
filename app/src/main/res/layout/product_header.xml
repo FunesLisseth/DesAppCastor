@@ -8,18 +8,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
-        android:textSize="16dp"
+        android:textSize="@dimen/cabecera_text_size"
         android:layout_marginLeft="12dp"
         android:layout_marginBottom="4dp"
-        android:layout_alignParentBottom="true" />
+        android:text="Titulo de cabecera"
+        android:paddingBottom="@dimen/text_padding_vertical" />
 
     <!--  divider -->
-    <View
+    <!--<View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginBottom="1dp"
         android:layout_alignParentBottom="true"
-        android:background="#DADADC" ></View>
+        android:background="#DADADC" ></View>-->
 
 
 </RelativeLayout>

@@ -7,27 +7,35 @@ import android.graphics.drawable.Drawable;
  */
 public class Product {
 
-    private int icon;
+    private int id;
+    private int image;
     private String title;
-    private String counter;
+    private String detail;
 
     private boolean isGroupHeader = false;
 
     public Product(String title) {
-        this(-1,title,null);
+        this(-1, -1,title,null);
         isGroupHeader = true;
     }
-    public Product(int icon, String title, String counter) {
+    public Product(int id, int image, String title, String detail) {
         super();
-        this.icon = icon;
+        this.id = id;
+        this.image = image;
         this.title = title;
-        this.counter = counter;
+        this.detail = detail;
     }
-    public int getIcon() {
-        return icon;
+    public int getId(){
+        return id;
     }
-    public void setIcon(int icon) {
-        this.icon = icon;
+    public void setId(int id){
+        this.id = id;
+    }
+    public int getImage() {
+        return image;
+    }
+    public void setImage(int image) {
+        this.image = image;
     }
     public String getTitle() {
         return title;
@@ -35,11 +43,11 @@ public class Product {
     public void setTitle(String title) {
         this.title = title;
     }
-    public String getCounter() {
-        return counter;
+    public String getDetail() {
+        return detail;
     }
-    public void setCounter(String counter) {
-        this.counter = counter;
+    public void setDetail(String detail) {
+        this.detail = detail;
     }
     public boolean isGroupHeader() {
         return isGroupHeader;

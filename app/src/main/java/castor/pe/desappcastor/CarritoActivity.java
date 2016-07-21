@@ -32,6 +32,7 @@ public class CarritoActivity extends AppCompatActivity {
                 view.setSelected(true);
 
                 Intent intent = new Intent(CarritoActivity.this, ProductDetailActivity.class);
+                intent.putExtra("id", String.valueOf(position));
                 CarritoActivity.this.startActivity(intent);
 
             }
