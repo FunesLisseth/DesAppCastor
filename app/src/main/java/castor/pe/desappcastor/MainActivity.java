@@ -32,9 +32,12 @@ public class MainActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new IntentIntegrator(MainActivity.this).initiateScan();
-              /*  Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();*/
+
+                //new IntentIntegrator(MainActivity.this).initiateScan();
+                IntentIntegrator integrator = new IntentIntegrator(MainActivity.this);
+                integrator.setPrompt("Coloque el codigo QR del producto en el centro");
+                integrator.setOrientationLocked(false);
+                integrator.initiateScan();
             }
         });
 
