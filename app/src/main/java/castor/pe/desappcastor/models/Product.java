@@ -1,4 +1,4 @@
-package castor.pe.desappcastor;
+package castor.pe.desappcastor.models;
 
 import android.graphics.drawable.Drawable;
 

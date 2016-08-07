@@ -1,8 +1,10 @@
-package castor.pe.desappcastor;
+package castor.pe.desappcastor.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
+
+import castor.pe.desappcastor.R;
 
 public class ProductDetailActivity extends AppCompatActivity {
 

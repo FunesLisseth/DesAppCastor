@@ -1,19 +1,19 @@
-package castor.pe.desappcastor;
+package castor.pe.desappcastor.activities;
 
-import android.app.ListActivity;
 import android.content.Intent;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import castor.pe.desappcastor.adapters.ProductAdapter;
+import castor.pe.desappcastor.models.Product;
+import castor.pe.desappcastor.R;
 
 
 public class ProductListActivity extends AppCompatActivity {
@@ -51,7 +51,7 @@ public class ProductListActivity extends AppCompatActivity {
         }); */
 
         //*/ 1. pass context and data to the custom adapter
-        AdapterProduct adapter = new AdapterProduct(this, generateData());
+        ProductAdapter adapter = new ProductAdapter(this, generateData());
 
         // if extending Activity
         // 2. Get ListView from activity_main.xml

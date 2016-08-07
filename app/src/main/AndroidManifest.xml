@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name=".activities.MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -21,33 +21,35 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".CategoryProductActivity"
+            android:name=".activities.CategoryActivity"
             android:label="@string/category_product_activity_label"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".activities.MainActivity" />
         <activity
-            android:name=".ProductListActivity"
+            android:name=".activities.ProductListActivity"
             android:label="@string/product_list_activity_label"
-            android:parentActivityName=".CategoryProductActivity" />
+            android:parentActivityName=".activities.CategoryActivity" />
         <activity
-            android:name=".ProductDetailActivity"
+            android:name=".activities.ProductDetailActivity"
             android:label="@string/product_detail_activity_label"
-            android:parentActivityName=".ProductListActivity" />
+            android:parentActivityName=".activities.ProductListActivity" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".activities.LoginActivity"
             android:label="@string/login_activity_label"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".activities.MainActivity" />
         <activity
-            android:name=".CarritoActivity"
+            android:name=".activities.CartActivity"
             android:label="@string/carrito_activity_label"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".activities.MainActivity" />
         <activity
-            android:name=".GroupActivity"
+            android:name=".activities.GroupActivity"
             android:label="@string/group_activity_label"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".activities.MainActivity" />
         <activity
             android:name="com.journeyapps.barcodescanner.CaptureActivity"
             android:screenOrientation="fullSensor"
             tools:replace="screenOrientation" />
     </application>
+
+    <uses-permission android:name="android.permission.INTERNET"/>
 
 </manifest>

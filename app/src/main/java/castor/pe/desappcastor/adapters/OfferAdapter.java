@@ -1,4 +1,4 @@
-package castor.pe.desappcastor;
+package castor.pe.desappcastor.adapters;
 
 import android.content.Context;
 import android.view.View;
@@ -6,6 +6,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
+
+import castor.pe.desappcastor.R;
 
 /**
  * Created by user on 29/07/2016.

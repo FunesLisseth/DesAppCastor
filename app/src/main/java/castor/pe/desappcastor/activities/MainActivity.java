@@ -1,9 +1,8 @@
-package castor.pe.desappcastor;
+package castor.pe.desappcastor.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -19,6 +18,9 @@ import android.widget.Toast;
 
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
+
+import castor.pe.desappcastor.adapters.OfferAdapter;
+import castor.pe.desappcastor.R;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -126,13 +128,13 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_category) {
 
-            Intent intent = new Intent(MainActivity.this, CategoryProductActivity.class);
+            Intent intent = new Intent(MainActivity.this, CategoryActivity.class);
             MainActivity.this.startActivity(intent);
 
         } else if (id == R.id.nav_account) {
 
         } else if (id == R.id.nav_orders) {
-            Intent intent = new Intent(MainActivity.this, CarritoActivity.class);
+            Intent intent = new Intent(MainActivity.this, CartActivity.class);
             MainActivity.this.startActivity(intent);
 
         } else if (id == R.id.nav_login) {

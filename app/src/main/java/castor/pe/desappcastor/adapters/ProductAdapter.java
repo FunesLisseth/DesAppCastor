@@ -1,4 +1,4 @@
-package castor.pe.desappcastor;
+package castor.pe.desappcastor.adapters;
 
 import java.util.ArrayList;
 import android.content.Context;
@@ -9,17 +9,17 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import castor.pe.desappcastor.Product;
 import castor.pe.desappcastor.R;
+import castor.pe.desappcastor.models.Product;
 
-public class AdapterProduct extends ArrayAdapter<Product> {
+public class ProductAdapter extends ArrayAdapter<Product> {
 
     private final Context context;
     private final ArrayList<Product> modelsArrayList;
 
-    public AdapterProduct(Context context, ArrayList<Product> modelsArrayList) {
+    public ProductAdapter(Context context, ArrayList<Product> modelsArrayList) {
 
-        super(context, R.layout.product_item, modelsArrayList);
+        super(context, R.layout.adapter_product_item, modelsArrayList);
 
         this.context = context;
         this.modelsArrayList = modelsArrayList;
@@ -35,7 +35,7 @@ public class AdapterProduct extends ArrayAdapter<Product> {
 
         View rowView = null;
         if(!modelsArrayList.get(position).isGroupHeader()){
-            rowView = inflater.inflate(R.layout.product_item, parent, false);
+            rowView = inflater.inflate(R.layout.adapter_product_item, parent, false);
 
             ImageView imgView = (ImageView) rowView.findViewById(R.id.productImage);
             TextView titleView = (TextView) rowView.findViewById(R.id.productTitle);
@@ -47,7 +47,7 @@ public class AdapterProduct extends ArrayAdapter<Product> {
             detailView.setText(modelsArrayList.get(position).getDetail());
         }
         else{
-            rowView = inflater.inflate(R.layout.product_header, parent, false);
+            rowView = inflater.inflate(R.layout.adapter_product_header, parent, false);
             TextView titleView = (TextView) rowView.findViewById(R.id.header);
             titleView.setText(modelsArrayList.get(position).getTitle());
         }

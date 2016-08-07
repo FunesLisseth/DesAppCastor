@@ -1,4 +1,4 @@
-package castor.pe.desappcastor;
+package castor.pe.desappcastor.activities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -8,12 +8,14 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-public class CarritoActivity extends AppCompatActivity {
+import castor.pe.desappcastor.R;
+
+public class CartActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_carrito);
+        setContentView(R.layout.activity_cart);
 
         ListView categoriaListView = (ListView) findViewById(R.id.productsListView);
 
@@ -31,9 +33,9 @@ public class CarritoActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long arg3) {
                 view.setSelected(true);
 
-                Intent intent = new Intent(CarritoActivity.this, ProductDetailActivity.class);
+                Intent intent = new Intent(CartActivity.this, ProductDetailActivity.class);
                 intent.putExtra("id", String.valueOf(position));
-                CarritoActivity.this.startActivity(intent);
+                CartActivity.this.startActivity(intent);
 
             }
         });

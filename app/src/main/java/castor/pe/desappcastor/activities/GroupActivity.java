@@ -1,9 +1,11 @@
-package castor.pe.desappcastor;
+package castor.pe.desappcastor.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import castor.pe.desappcastor.R;
 
 public class GroupActivity extends AppCompatActivity {
 
@@ -19,7 +21,7 @@ public class GroupActivity extends AppCompatActivity {
         //ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, items);
         //groupListView.setAdapter(adapter);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(GroupActivity.this, R.layout.text_list_view, items);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(GroupActivity.this, R.layout.adapter_listview_text, items);
         groupListView.setAdapter(adapter);
     }
 }
