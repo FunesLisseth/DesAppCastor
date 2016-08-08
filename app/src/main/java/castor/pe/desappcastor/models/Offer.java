@@ -6,20 +6,20 @@ import java.util.List;
 public class Offer {
 
     private int id;
-    private int image;
-    private String title;
-    private String price;
+    private String imagePath;
+    private String name;
+    private String localPrice;
 
     private boolean isGroupHeader = false;
 
     public Offer(String title) {
     }
-    public Offer(int id, int image, String title, String price) {
+    public Offer(int id, String imagePath, String name, String localPrice) {
         super();
         this.id = id;
-        this.image = image;
-        this.title = title;
-        this.price = price;
+        this.imagePath = imagePath;
+        this.name = name;
+        this.localPrice = localPrice;
     }
     public int getId(){
         return id;
@@ -27,20 +27,20 @@ public class Offer {
     public void setId(int id){
         this.id = id;
     }
-    public int getImage() {
-        return image;
+    public String getImagePath() {
+        return imagePath;
     }
-    public void setImage(int image) {
-        this.image = image;
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
     }
-    public String getTitle() {
-        return title;
+    public String getName() {
+        return name;
     }
-    public void setTitle(String title) {
-        this.title = title;
+    public void setName(String name) {
+        this.name = name;
     }
-    public String getPrice() {
-        return this.price;
+    public String getLocalPrice() {
+        return this.localPrice;
     }
 
 }

@@ -15,11 +15,11 @@ import retrofit2.http.Path;
  */
 public interface OfferInterface {
 
-    @GET("product/offer/{id}")
+    @GET("product/offer/")
     Call<List<Offer>> getOffers();
 
     static final Retrofit retrofit = new Retrofit.Builder()
-            .baseUrl("http://127.0.0.1:8081/castor/api/")
+            .baseUrl("http://192.168.7.228:8081/castor/api/")
             .addConverterFactory(GsonConverterFactory.create())
             .build();
 }

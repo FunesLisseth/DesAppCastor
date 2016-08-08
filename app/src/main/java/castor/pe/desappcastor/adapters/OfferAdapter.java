@@ -20,9 +20,6 @@ import castor.pe.desappcastor.R;
 import castor.pe.desappcastor.activities.ProductDetailActivity;
 import castor.pe.desappcastor.models.Offer;
 
-/**
- * Created by user on 29/07/2016.
- */
 public class OfferAdapter extends RecyclerView.Adapter<OfferAdapter.ViewHolder> {
 
 
@@ -63,12 +60,12 @@ public class OfferAdapter extends RecyclerView.Adapter<OfferAdapter.ViewHolder> 
     public void onBindViewHolder(ViewHolder viewHolder, final int i) {
         Offer item = items.get(i);
 
-        Glide.with(viewHolder.itemView.getContext())
-                .load(item.getImage())
+        /*Glide.with(viewHolder.itemView.getContext())
+                .load("")
                 .centerCrop()
-                .into(viewHolder.image);
-        viewHolder.title.setText(item.getTitle());
-        viewHolder.price.setText("$" + item.getTitle());
+                .into(viewHolder.image);*/
+        viewHolder.title.setText(item.getName());
+        viewHolder.price.setText("$" + item.getLocalPrice());
 
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
