@@ -1,97 +1,103 @@
 package castor.pe.desappcastor.activities;
 
-import android.content.Intent;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ListView;
-import android.widget.TextView;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 
+import com.google.gson.Gson;
+
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
-import castor.pe.desappcastor.adapters.ProductAdapter;
-import castor.pe.desappcastor.models.Product;
 import castor.pe.desappcastor.R;
+import castor.pe.desappcastor.adapters.ProductAdapter;
+import castor.pe.desappcastor.interfaces.ProductInterface;
+import castor.pe.desappcastor.models.Product;
+import okhttp3.Interceptor;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 
 public class ProductListActivity extends AppCompatActivity {
+
+    public static final String BASE_URL = "http://192.168.1.202:8081/castor/api/";
+    private static final String TAG = "ProductActivity";
+
+    private RecyclerView recyclerView;
+    private ProductAdapter mAdapter;
+    private List<Product> products = new ArrayList<Product>();
+
+    private RecyclerView.LayoutManager mLayoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_list);
-
         setupActionBar();
 
-        /*ListView categoriaListView = (ListView) findViewById(R.id.productsListView);
+        recyclerView =(RecyclerView) findViewById(R.id.recyclerView);
 
-        /*String[] items = { "Servicio Corte Recto Tablero x Pza", "Servicio Corte Recto Tablero x Pza", "Serv.Canteado Fino Std xML (Promo)", "Serv.Canteado 3mm Std xML (Promo)",
-                        "Servicio Ranura Fondo Standard x ML", "Servicio Corte Recto Tablero x Pza  (Promo)", "Servicio Corte Recto Tablero x Pza", "Aster  Tornillo autoroscante ap/am/pzd  3.5x50mm",
-                        "Duraflex cantopvc  Blanco/1100 Std  0.4x22mm   (Promo Set. 2014)", "Maderba aglo mel  Laberinto sf2c 2140x2440x18mm", "Maderba aglo mel  Otoño sf2c 2140x2440x18mm",
-                        "Nordex hdf  Crudo 1520x2440x3.0mm", "Novopan MDP aglo  Crudo 2140x2440x15mm" };
+        OkHttpClient okClient = new OkHttpClient.Builder()
+                .addInterceptor(
+                        new Interceptor() {
+                            @Override
+                            public Response intercept(Interceptor.Chain chain) throws IOException {
+                                Request request = chain.request().newBuilder()
+                                        .addHeader("Accept", "Application/JSON").build();
+                                return chain.proceed(request);
+                            }
+                        }).build();
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, items);
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .client(okClient)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
 
-        categoriaListView.setAdapter(adapter);
+        ProductInterface service = retrofit.create(ProductInterface.class);
+        Call<List<Product>> call = service.getProducyByCategory("2");
 
-
-        categoriaListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
+        call.enqueue(new Callback<List<Product>>() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long arg3) {
-                view.setSelected(true);
+            public void onResponse(Call<List<Product>> call, retrofit2.Response<List<Product>> response) {
+                Log.d(TAG, "response.code = " + response.code());
 
-                Intent intent = new Intent(ProductListActivity.this, ProductDetailActivity.class);
-                ProductListActivity.this.startActivity(intent);
+                if (response.isSuccessful()){
+                    Log.d(TAG, "response body = " + new Gson().toJson(response.body()));
 
-            }
-        }); */
+                    products = response.body();
+                    mAdapter = new ProductAdapter(products);
 
-        //*/ 1. pass context and data to the custom adapter
-        ProductAdapter adapter = new ProductAdapter(this, generateData());
-
-        // if extending Activity
-        // 2. Get ListView from activity_main.xml
-        ListView productsListView = (ListView) findViewById(R.id.productsListView);
-
-        // 3. setListAdapter
-        productsListView.setAdapter(adapter);
-        //if extending Activity
-        //setListAdapter(adapter);
-
-        productsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long arg3) {
-                view.setSelected(true);
-
-                if (position >= 1){
-                    TextView titleView = (TextView) view.findViewById(R.id.productTitle);
-
-                    Intent intent = new Intent(ProductListActivity.this, ProductDetailActivity.class);
-                    intent.putExtra("id", titleView.getTag().toString());
-                    ProductListActivity.this.startActivity(intent);
+                    mLayoutManager = new LinearLayoutManager(getApplicationContext());
+                    recyclerView.setLayoutManager(mLayoutManager);
+                    recyclerView.setItemAnimator(new DefaultItemAnimator());
+                    recyclerView.setAdapter(mAdapter);
                 }
+            }
 
+            @Override
+            public void onFailure(Call<List<Product>> call, Throwable t) {
+                Log.e(TAG, "OnFailure:" + t.getMessage());
             }
         });
+
+
+
+
+
     }
 
-    private ArrayList<Product> generateData(){
-        ArrayList<Product> models = new ArrayList<Product>();
 
-        models.add(new Product("Categoria de producto"));
-        models.add(new Product(1,R.drawable.image_product_thumb,"Servicio de corte","Detalle de producto"));
-        models.add(new Product(2,R.drawable.image_product_thumb,"Novopan MDP aglo Crudo","Detalle de producto"));
-        models.add(new Product(3,R.drawable.image_product_thumb,"Duraflex cantopvc  Blanco","Detalle de producto"));
-        models.add(new Product(4,R.drawable.image_product_thumb,"Nordex hdf Crudo","Detalle de producto"));
-        models.add(new Product(5,R.drawable.image_product_thumb,"Aster  Tornillo autoroscante","Detalle de producto"));
-
-        return models;
-    }
 
     private void setupActionBar() {
         ActionBar actionBar = getSupportActionBar();

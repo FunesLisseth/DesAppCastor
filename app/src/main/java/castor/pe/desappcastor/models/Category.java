@@ -7,25 +7,13 @@ import java.util.List;
  */
 public class Category {
 
-
-    /**
-     * id : 1
-     * name : Tableros
-     * description : Categoria Tableros
-     * state : 1
-     * createdBy : ADMIN
-     * createdAt : 1468941180000
-     * subCategoriesCount : 0
-     */
-
     private int id;
     private String name;
     private String description;
     private int state;
-    private int createdBy;
-    private long createdAt;
+    private String createdBy;
+    private String createdAt;
     private int subCategoriesCount;
-    private List<Category> items;
 
     public int getId() {
         return id;
@@ -59,19 +47,19 @@ public class Category {
         this.state = state;
     }
 
-    public int getCreatedBy() {
+    public String getCreatedBy() {
         return createdBy;
     }
 
-    public void setCreatedBy(int createdBy) {
+    public void setCreatedBy(String createdBy) {
         this.createdBy = createdBy;
     }
 
-    public long getCreatedAt() {
+    public String getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(long createdAt) {
+    public void setCreatedAt(String createdAt) {
         this.createdAt = createdAt;
     }
 
@@ -79,15 +67,5 @@ public class Category {
         return subCategoriesCount;
     }
 
-    public void setSubCategoriesCount(int subCategoriesCount) {
-        this.subCategoriesCount = subCategoriesCount;
-    }
-
-    public List<Category> getItems() {
-        return items;
-    }
-
-    public void setItems(List<Category> items) {
-        this.items = items;
-    }
+    public void setSubCategoriesCount(int subCategoriesCount) { this.subCategoriesCount = subCategoriesCount; }
 }

@@ -1,6 +1,8 @@
 package castor.pe.desappcastor.adapters;
 
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +11,8 @@ import android.widget.TextView;
 import java.util.List;
 
 import castor.pe.desappcastor.R;
+import castor.pe.desappcastor.activities.ProductDetailActivity;
+import castor.pe.desappcastor.activities.ProductListActivity;
 import castor.pe.desappcastor.models.Category;
 
 /**
@@ -30,9 +34,20 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.MyView
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
-        final CategoryAdapter.MyViewHolder holder1 = holder;
-        holder1.name.setText(categories.get(position).getName());
+    public void onBindViewHolder(MyViewHolder holder, final int position) {
+
+        holder.name.setText(categories.get(position).getName());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d("CategoryAdapter", "" + categories.get(position).getId());
+
+                Intent intent = new Intent(view.getContext(),ProductListActivity.class);
+                intent.putExtra("categoryId",categories.get(position).getId());
+                view.getContext().startActivity(intent);
+            }
+        });
     }
 
     @Override
