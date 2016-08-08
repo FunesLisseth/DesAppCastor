@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        android:key="pref_gen"
+        android:title="@string/pref_gen">
+
+        <EditTextPreference
+            android:key="usuario_twitter"
+            android:title="@string/pref_endpoint"
+            android:summary="@string/pref_endpoint_resumen"
+            android:selectAllOnFocus="true"
+            android:singleLine="true" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

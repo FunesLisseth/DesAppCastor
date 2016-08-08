@@ -1,7 +1,9 @@
 package castor.pe.desappcastor.activities;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceActivity;
 import android.support.design.widget.FloatingActionButton;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -14,6 +16,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.zxing.integration.android.IntentIntegrator;
@@ -21,9 +24,19 @@ import com.google.zxing.integration.android.IntentResult;
 
 import castor.pe.desappcastor.adapters.OfferAdapter;
 import castor.pe.desappcastor.R;
+import castor.pe.desappcastor.utils.Constants;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    private NavigationView navigationView;
+    private FloatingActionButton fab;
+
+    private TextView profileTextView;
+    private TextView userNameTextView;
+
+    // Storage Access Class
+    SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +64,34 @@ public class MainActivity extends AppCompatActivity
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
+
+        sharedPreferences = getSharedPreferences(Constants.SHARED_PREF_KEY, MODE_PRIVATE);
+        String userType = sharedPreferences.getString(Constants.PREF_USER_TYPE, "");
+
+        //profileTextView = (TextView)navigationView.getHeaderView(0).findViewById(R.id.profileTextView);
+        //userNameTextView = (TextView)navigationView.getHeaderView(0).findViewById(R.id.userNameTextView);
+
+        if( userType!=null&&!userType.equals("") ){
+            if( userType.equals("1") ){//vendedor
+                showOptionsSeller(navigationView);
+                //profileTextView.setText("Seller");
+            }else if( userType.equals("2") ){//cliente
+                showOptionsClient(navigationView);
+                //profileTextView.setText("Client");
+            }
+
+            String firstName = sharedPreferences.getString(Constants.PREF_USER_FIRSTNAME, "");
+            String lastName = sharedPreferences.getString(Constants.PREF_USER_LASTNAME, "");
+
+            //userNameTextView.setText(firstName+" "+lastName);
+
+        }else{
+            //profileTextView.setText("Public");
+            //userNameTextView.setText("");
+            showOptionsPublic(navigationView);
+        }
+
         navigationView.setNavigationItemSelectedListener(this);
 
         GridView gridview = (GridView) findViewById(R.id.gridview);
@@ -111,6 +151,13 @@ public class MainActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+
+
+            startActivity(new Intent(this, PreferenceActivity.class));
+
+            //Intent intent = new Intent(MainActivity.this, PreferenceActivity.class);
+            //MainActivity.this.startActivity(intent);
+
             return true;
         }
 
@@ -120,40 +167,65 @@ public class MainActivity extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-
         if (id == R.id.nav_home) {
-
-        } else if (id == R.id.nav_category) {
-
-            Intent intent = new Intent(MainActivity.this, CategoryActivity.class);
-            MainActivity.this.startActivity(intent);
-
+            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+        } else if (id == R.id.nav_categories) {
+            startActivity(new Intent(getApplicationContext(), CategoryActivity.class));
         } else if (id == R.id.nav_account) {
-
-        } else if (id == R.id.nav_orders) {
-            Intent intent = new Intent(MainActivity.this, CartActivity.class);
-            MainActivity.this.startActivity(intent);
-
-        } else if (id == R.id.nav_login) {
-            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-            MainActivity.this.startActivity(intent);
-
-        } else if (id == R.id.nav_recently_viewed) {
-
-        } else if (id == R.id.nav_fav) {
-
-        } else if (id == R.id.nav_search) {
-
-        } else if (id == R.id.nav_group) {
-            Intent intent = new Intent(MainActivity.this, GroupActivity.class);
-            MainActivity.this.startActivity(intent);
+            startActivity(new Intent(getApplicationContext(), AccountActivity.class));
+        } else if (id == R.id.nav_favorite) {
+            //startActivity(new Intent(getApplicationContext(), FavoriteActivity.class));
+        } else if (id == R.id.nav_order) {
+            //startActivity(new Intent(getApplicationContext(), OrderActivity.class));
+        } else if (id == R.id.nav_shopping_cart) {
+            //startActivity(new Intent(getApplicationContext(), ShoppingActivity.class));
+        } else if (id == R.id.nav_sign_in) {
+            startActivity(new Intent(getApplicationContext(), SigninActivity.class));
+        } else if (id == R.id.nav_sign_off) {
+            sharedPreferences = this.getSharedPreferences(Constants.SHARED_PREF_KEY, MODE_PRIVATE);
+            SharedPreferences.Editor e = sharedPreferences.edit();
+            e.remove(Constants.PREF_USER_ID);
+            e.remove(Constants.PREF_USER_TYPE);
+            e.remove(Constants.PREF_USER_FIRSTNAME);
+            e.remove(Constants.PREF_USER_LASTNAME);
+            e.commit();
+            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+        } else if (id == R.id.nav_about) {
+            startActivity(new Intent(getApplicationContext(), GroupActivity.class));
         }
+
+        // Setear título actual
+        setTitle(item.getTitle());
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
+
         return true;
+    }
+
+    private void showOptionsClient(NavigationView navigationView){
+        navigationView.getMenu().findItem(R.id.nav_account).setVisible(true);
+        navigationView.getMenu().findItem(R.id.nav_favorite).setVisible(true);
+        navigationView.getMenu().findItem(R.id.nav_order).setVisible(true);
+        navigationView.getMenu().findItem(R.id.nav_sign_in).setVisible(false);
+        navigationView.getMenu().findItem(R.id.nav_sign_off).setVisible(true);
+    }
+
+    private void showOptionsSeller(NavigationView navigationView){
+        navigationView.getMenu().findItem(R.id.nav_account).setVisible(false);
+        navigationView.getMenu().findItem(R.id.nav_favorite).setVisible(false);
+        navigationView.getMenu().findItem(R.id.nav_order).setVisible(false);
+        navigationView.getMenu().findItem(R.id.nav_sign_in).setVisible(false);
+        navigationView.getMenu().findItem(R.id.nav_sign_off).setVisible(true);
+    }
+
+    private void showOptionsPublic(NavigationView navigationView){
+        navigationView.getMenu().findItem(R.id.nav_account).setVisible(false);
+        navigationView.getMenu().findItem(R.id.nav_favorite).setVisible(false);
+        navigationView.getMenu().findItem(R.id.nav_order).setVisible(false);
+        navigationView.getMenu().findItem(R.id.nav_sign_in).setVisible(true);
+        navigationView.getMenu().findItem(R.id.nav_sign_off).setVisible(false);
     }
 }

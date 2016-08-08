@@ -16,4 +16,57 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+
+    <!-- preferences -->
+    <string name="pref_gen">Preferencias generales</string>
+    <string name="pref_endpoint">EndPoint</string>
+    <string name="pref_endpoint_resumen">EndPoint de Api REST</string>
+
+
+    <string name="item_home">Home</string>
+    <string name="item_categories">Categories</string>
+    <string name="item_account">My Account</string>
+    <string name="item_favorite">My Favorites</string>
+    <string name="item_order">My Orders</string>
+    <string name="item_shopping_cart">Shopping Cart</string>
+    <string name="item_sign_in">Sign In</string>
+    <string name="item_sign_off">Sign Off</string>
+    <string name="item_about">About</string>
+
+    <string name="title_categories">Categories</string>
+    <string name="title_favorites">Favorites</string>
+    <string name="title_orders">My Orders</string>
+    <string name="title_shopping">Shopping Cart</string>
+    <string name="title_signin">Sign In</string>
+    <string name="title_account">My Account</string>
+    <string name="title_password">Change Password</string>
+    <string name="title_about">About</string>
+
+
+    <string name="titulo_tab_login">LOGIN</string>
+    <string name="titulo_tab_register">REGISTER</string>
+
+
+    <string name="action_search">Buscar</string>
+    <string name="titulo_tab_platillos">PLATILLOS</string>
+    <string name="titulo_tab_bebidas">BEBIDAS</string>
+    <string name="titulo_tab_postres">POSTRES</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="texto_cambiar_contrasena">Cambia tu contraseña</string>
+    <string name="etiqueta_contrasena">Contraseña</string>
+    <string name="etiqueta_info_usuario">Account Info</string>
+    <string name="label_change_password">Change Password</string>
+
+    <string name="label_document_type">Document Type</string>
+
+
+    <string-array name="document_arrays">
+        <item>DNI</item>
+        <item>CE</item>
+    </string-array>
+    <string name="titulo_comidas_populares">Mas populares</string>
+
 </resources>
