@@ -1,62 +1,71 @@
 package castor.pe.desappcastor.adapters;
 
 import android.content.Context;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
+
+import java.util.List;
 
 import castor.pe.desappcastor.R;
+import castor.pe.desappcastor.models.Offer;
 
 /**
  * Created by user on 29/07/2016.
  */
-public class OfferAdapter extends BaseAdapter {
+public class OfferAdapter extends RecyclerView.Adapter<OfferAdapter.ViewHolder> {
 
-        private Context mContext;
 
-        public OfferAdapter(Context c) {
-            mContext = c;
+    private final List<Offer> items;
+
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+        public TextView title;
+        public TextView price;
+        public ImageView image;
+
+        public ViewHolder(View v) {
+            super(v);
+
+            title = (TextView) v.findViewById(R.id.offer_title);
+            price = (TextView) v.findViewById(R.id.offer_price);
+            image = (ImageView) v.findViewById(R.id.offer_image);
         }
+    }
 
-        public int getCount() {
-            return mThumbIds.length;
-        }
 
-        public Object getItem(int position) {
-            return null;
-        }
+    public OfferAdapter(List<Offer> items) {
+        this.items = items;
+    }
 
-        public long getItemId(int position) {
-            return 0;
-        }
+    @Override
+    public int getItemCount() {
+        return items.size();
+    }
 
-        // create a new ImageView for each item referenced by the Adapter
-        public View getView(int position, View convertView, ViewGroup parent) {
-            ImageView imageView;
-            if (convertView == null) {
-                // if it's not recycled, initialize some attributes
-                imageView = new ImageView(mContext);
-                imageView.setLayoutParams(new GridView.LayoutParams(85, 85));
-                imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-                imageView.setPadding(8, 8, 8, 8);
-            } else {
-                imageView = (ImageView) convertView;
-            }
+    @Override
+    public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
+        View v = LayoutInflater.from(viewGroup.getContext())
+                .inflate(R.layout.adapter_offer_item, viewGroup, false);
+        return new ViewHolder(v);
+    }
 
-            imageView.setImageResource(mThumbIds[position]);
-            return imageView;
-        }
+    @Override
+    public void onBindViewHolder(ViewHolder viewHolder, int i) {
+        Offer item = items.get(i);
 
-        // references to our images
-        private Integer[] mThumbIds = {
-                R.drawable.image_product_thumb, R.drawable.image_product_thumb,
-                R.drawable.image_product_thumb, R.drawable.image_product_thumb,
-                R.drawable.image_product_thumb, R.drawable.image_product_thumb,
-                R.drawable.image_product_thumb, R.drawable.image_product_thumb,
-                R.drawable.image_product_thumb, R.drawable.image_product_thumb,
-                R.drawable.image_product_thumb, R.drawable.image_product_thumb
-        };
+        Glide.with(viewHolder.itemView.getContext())
+                .load(item.getImage())
+                .centerCrop()
+                .into(viewHolder.image);
+        viewHolder.title.setText(item.getTitle());
+        viewHolder.price.setText("$" + item.getTitle());
 
+    }
 }

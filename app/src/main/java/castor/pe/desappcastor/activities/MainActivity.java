@@ -3,6 +3,11 @@ package castor.pe.desappcastor.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -16,14 +21,37 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 import castor.pe.desappcastor.adapters.OfferAdapter;
 import castor.pe.desappcastor.R;
+import castor.pe.desappcastor.interfaces.OfferInterface;
+import castor.pe.desappcastor.models.Offer;
+import okhttp3.Interceptor;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    public static final String BASE_URL = "http://127.0.0.1:8081/castor/api/";
+    private static final String TAG = "MainActivity";
+
+    private RecyclerView recyclerView;
+    private List<Offer> offers = new ArrayList<Offer>();
+
+    private RecyclerView.LayoutManager mLayoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,14 +82,28 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        GridView gridview = (GridView) findViewById(R.id.gridview);
-        gridview.setAdapter(new OfferAdapter(this));
 
-        gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View v,
-                                    int position, long id) {
-                Toast.makeText(MainActivity.this, "" + position,
-                        Toast.LENGTH_SHORT).show();
+        recyclerView = (RecyclerView) findViewById(R.id.recyclerViewMain);
+
+
+        OfferInterface offerService = OfferInterface.retrofit.create(OfferInterface.class);
+        final Call<List<Offer>> call = offerService.getOffers();
+
+        call.enqueue(new Callback<List<Offer>>() {
+            @Override
+            public void onResponse(Call<List<Offer>> call, retrofit2.Response<List<Offer>> response) {
+                Log.d(TAG, "response.code = " + response.code());
+                if (response.isSuccessful()){
+                    Log.d(TAG, "response body = " + new Gson().toJson(response.body()));
+                    offers = response.body();
+                    OfferAdapter offerAdapter = new OfferAdapter(offers);
+                    recyclerView.setAdapter(offerAdapter);
+                    recyclerView.setLayoutManager(new GridLayoutManager(getApplicationContext(), 2));
+                }
+            }
+            @Override
+            public void onFailure(Call<List<Offer>> call, Throwable t) {
+                Log.e(TAG, "OnFailure:" + t.getMessage());
             }
         });
     }

@@ -26,4 +26,9 @@
     <dimen name="nav_header_vertical_spacing">16dp</dimen>
     <dimen name="nav_header_height">180dp</dimen>
 
+
+    <dimen name="espacio_norma_1">16dp</dimen>
+    <dimen name="espacio_norma_2">8dp</dimen>
+    <dimen name="altura_miniatura_comida">250dp</dimen>
+
 </resources>
