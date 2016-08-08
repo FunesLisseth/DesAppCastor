@@ -1,10 +1,12 @@
 package castor.pe.desappcastor.activities;
 
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -29,7 +31,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ProductDetailActivity extends AppCompatActivity {
 
-    public static final String BASE_URL = "http://192.168.1.202:8081/castor/api/";
+    public static final String BASE_URL = "http://192.168.7.228:8081/castor/api/";
     private static final String TAG = "ProductActivity";
 
     TextView nameTextView;
@@ -48,7 +50,9 @@ public class ProductDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_detail);
 
-        String productId = getIntent().getExtras().getString("productId");
+        final String productId = getIntent().getExtras().getString("productId");
+
+        final ImageView favoriteImageButton = (ImageView)findViewById(R.id.favoriteImageButton);
 
         nameTextView = (TextView) findViewById(R.id.nameTextView);
         brandTextView = (TextView) findViewById(R.id.brandTextView);
@@ -80,7 +84,7 @@ public class ProductDetailActivity extends AppCompatActivity {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        ProductInterface service = retrofit.create(ProductInterface.class);
+        final ProductInterface service = retrofit.create(ProductInterface.class);
         Call<Product> call = service.getProductById(productId);
 
         call.enqueue(new Callback<Product>() {
@@ -111,5 +115,12 @@ public class ProductDetailActivity extends AppCompatActivity {
             }
         });
 
+        favoriteImageButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                service.setProductFavorite(1, productId);
+                Drawable myDrawable = getResources().getDrawable(R.drawable.ic_favorite_black_24dp);
+                favoriteImageButton.setImageDrawable(myDrawable);
+            }
+        });
     }
 }

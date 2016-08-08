@@ -30,7 +30,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ProductListActivity extends AppCompatActivity {
 
-    public static final String BASE_URL = "http://192.168.1.202:8081/castor/api/";
+    public static final String BASE_URL = "http://192.168.7.228:8081/castor/api/";
     private static final String TAG = "ProductActivity";
 
     private RecyclerView recyclerView;

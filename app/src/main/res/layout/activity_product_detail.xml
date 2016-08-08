@@ -57,14 +57,37 @@
                 android:paddingBottom="@dimen/image_padding"
                 android:id="@+id/productImageView" />
 
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="$ 13.15"
-                android:paddingTop="@dimen/text_padding_vertical"
-                android:paddingBottom="@dimen/text_padding_vertical"
-                android:textSize="@dimen/text_size"
-                android:id="@+id/dolarPriceTextView" />
+                android:layout_gravity="center_horizontal"></LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="$ 13.15"
+                    android:paddingTop="@dimen/text_padding_vertical"
+                    android:paddingBottom="@dimen/text_padding_vertical"
+                    android:textSize="@dimen/text_size"
+                    android:id="@+id/dolarPriceTextView" />
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/favoriteImageButton"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentEnd="true"
+                    android:src="@drawable/ic_favorite_border_black_24dp"
+                    android:padding="0dp"
+                    android:layout_margin="0dp"
+                    android:background="@android:color/transparent"
+                    android:adjustViewBounds="true" />
+            </RelativeLayout>
 
             <TextView
                 android:layout_width="wrap_content"
