@@ -115,7 +115,6 @@ public class MainActivity extends AppCompatActivity
             if (result.getContents() == null) {
                 Toast.makeText(this, "Cancelled", Toast.LENGTH_LONG).show();
             } else {
-                //Toast.makeText(this, "Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
 
                 Intent intent = new Intent(MainActivity.this, ProductDetailActivity.class);
                 intent.putExtra("productId", result.getContents());

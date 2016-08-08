@@ -1,7 +1,9 @@
 package castor.pe.desappcastor.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +17,7 @@ import com.bumptech.glide.Glide;
 import java.util.List;
 
 import castor.pe.desappcastor.R;
+import castor.pe.desappcastor.activities.ProductDetailActivity;
 import castor.pe.desappcastor.models.Offer;
 
 /**
@@ -57,7 +60,7 @@ public class OfferAdapter extends RecyclerView.Adapter<OfferAdapter.ViewHolder> 
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder viewHolder, int i) {
+    public void onBindViewHolder(ViewHolder viewHolder, final int i) {
         Offer item = items.get(i);
 
         Glide.with(viewHolder.itemView.getContext())
@@ -66,6 +69,16 @@ public class OfferAdapter extends RecyclerView.Adapter<OfferAdapter.ViewHolder> 
                 .into(viewHolder.image);
         viewHolder.title.setText(item.getTitle());
         viewHolder.price.setText("$" + item.getTitle());
+
+        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d("OfferAdapter", "" + items.get(i).getId());
+                Intent intent = new Intent(view.getContext(),ProductDetailActivity.class);
+                intent.putExtra("productId",String.valueOf(items.get(i).getId()));
+                view.getContext().startActivity(intent);
+            }
+        });
 
     }
 }

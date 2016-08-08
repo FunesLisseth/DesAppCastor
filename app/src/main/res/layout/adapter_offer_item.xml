@@ -8,6 +8,7 @@
     <ImageView
         android:id="@+id/offer_image"
         android:layout_width="match_parent"
+        android:src="@drawable/image_product"
         android:layout_height="192dp" />
 
     <LinearLayout
