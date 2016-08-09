@@ -21,5 +21,5 @@ public class Constants {
     public static final String PRODUCT_URL = PATH+"castor/api/product/";
 
     public static final String ENDPOINT = "http://192.168.43.94:8081/castor/api/";
-    
+
 }
