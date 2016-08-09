@@ -20,4 +20,6 @@ public class Constants {
     public static final String LOGIN_URL = PATH+"castor/api/security/";
     public static final String PRODUCT_URL = PATH+"castor/api/product/";
 
+    public static final String vacio = ""; //generar pushh
+
 }
