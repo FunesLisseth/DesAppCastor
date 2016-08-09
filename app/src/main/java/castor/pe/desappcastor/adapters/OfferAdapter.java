@@ -65,7 +65,7 @@ public class OfferAdapter extends RecyclerView.Adapter<OfferAdapter.ViewHolder> 
                 .centerCrop()
                 .into(viewHolder.image);*/
         viewHolder.title.setText(item.getName());
-        viewHolder.price.setText("$" + item.getLocalPrice());
+        viewHolder.price.setText("S/. " + item.getLocalPrice());
 
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

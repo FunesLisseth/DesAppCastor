@@ -44,7 +44,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.MyView
                 Log.d("CategoryAdapter", "" + categories.get(position).getId());
 
                 Intent intent = new Intent(view.getContext(),ProductListActivity.class);
-                intent.putExtra("categoryId",categories.get(position).getId());
+                intent.putExtra("categoryId",String.valueOf(categories.get(position).getId()));
                 view.getContext().startActivity(intent);
             }
         });

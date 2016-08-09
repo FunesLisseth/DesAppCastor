@@ -20,6 +20,7 @@ import castor.pe.desappcastor.R;
 import castor.pe.desappcastor.adapters.ProductAdapter;
 import castor.pe.desappcastor.interfaces.ProductInterface;
 import castor.pe.desappcastor.models.Product;
+import castor.pe.desappcastor.utils.Constants;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -31,7 +32,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ProductDetailActivity extends AppCompatActivity {
 
-    public static final String BASE_URL = "http://192.168.7.228:8081/castor/api/";
+    public static final String BASE_URL = Constants.ENDPOINT;
     private static final String TAG = "ProductActivity";
 
     TextView nameTextView;

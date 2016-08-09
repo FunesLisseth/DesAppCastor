@@ -20,6 +20,7 @@ import castor.pe.desappcastor.interfaces.CategoryInterface;
 import castor.pe.desappcastor.models.Category;
 
 
+import castor.pe.desappcastor.utils.Constants;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -32,7 +33,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class CategoryActivity extends AppCompatActivity {
 
-    public static final String BASE_URL = "http://192.168.7.228:8081/castor/api/";
+    public static final String BASE_URL = Constants.ENDPOINT;
+
     private static final String TAG = "CategoryActivity";
 
     private RecyclerView recyclerView;

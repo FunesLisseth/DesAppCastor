@@ -4,6 +4,7 @@ import java.util.List;
 
 import castor.pe.desappcastor.models.Offer;
 import castor.pe.desappcastor.models.Product;
+import castor.pe.desappcastor.utils.Constants;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -19,7 +20,7 @@ public interface OfferInterface {
     Call<List<Offer>> getOffers();
 
     static final Retrofit retrofit = new Retrofit.Builder()
-            .baseUrl("http://192.168.1.202:8081/castor/api/")
+            .baseUrl(Constants.ENDPOINT)
             .addConverterFactory(GsonConverterFactory.create())
             .build();
 }

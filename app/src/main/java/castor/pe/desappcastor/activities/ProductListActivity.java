@@ -18,6 +18,7 @@ import castor.pe.desappcastor.R;
 import castor.pe.desappcastor.adapters.ProductAdapter;
 import castor.pe.desappcastor.interfaces.ProductInterface;
 import castor.pe.desappcastor.models.Product;
+import castor.pe.desappcastor.utils.Constants;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -30,7 +31,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ProductListActivity extends AppCompatActivity {
 
-    public static final String BASE_URL = "http://192.168.7.228:8081/castor/api/";
+    public static final String BASE_URL = Constants.ENDPOINT;
     private static final String TAG = "ProductActivity";
 
     private RecyclerView recyclerView;
@@ -44,6 +45,8 @@ public class ProductListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_list);
         setupActionBar();
+
+        final String categoryId = getIntent().getExtras().getString("categoryId");
 
         recyclerView =(RecyclerView) findViewById(R.id.recyclerView);
 
@@ -65,7 +68,7 @@ public class ProductListActivity extends AppCompatActivity {
                 .build();
 
         ProductInterface service = retrofit.create(ProductInterface.class);
-        Call<List<Product>> call = service.getProducyByCategory("2");
+        Call<List<Product>> call = service.getProducyByCategory(categoryId);
 
         call.enqueue(new Callback<List<Product>>() {
             @Override
@@ -76,6 +79,9 @@ public class ProductListActivity extends AppCompatActivity {
                     Log.d(TAG, "response body = " + new Gson().toJson(response.body()));
 
                     products = response.body();
+
+                    if(products==null)products=new ArrayList<Product>();
+
                     mAdapter = new ProductAdapter(products);
 
                     mLayoutManager = new LinearLayoutManager(getApplicationContext());

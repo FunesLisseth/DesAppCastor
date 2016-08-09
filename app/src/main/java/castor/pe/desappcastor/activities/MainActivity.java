@@ -58,11 +58,12 @@ public class MainActivity extends AppCompatActivity
 
     private TextView profileTextView;
     private TextView userNameTextView;
+    private TextView userLoginTextView;
 
     // Storage Access Class
     SharedPreferences sharedPreferences;
 
-    public static final String BASE_URL = "http://192.168.1.202:8081/castor/api/";
+    public static final String BASE_URL = Constants.ENDPOINT;
     private static final String TAG = "MainActivity";
 
     private RecyclerView recyclerView;
@@ -101,6 +102,8 @@ public class MainActivity extends AppCompatActivity
         sharedPreferences = getSharedPreferences(Constants.SHARED_PREF_KEY, MODE_PRIVATE);
         String userType = sharedPreferences.getString(Constants.PREF_USER_TYPE, "");
 
+        userLoginTextView = (TextView)navigationView.getHeaderView(0).findViewById(R.id.userLoginTextView);
+
         //profileTextView = (TextView)navigationView.getHeaderView(0).findViewById(R.id.profileTextView);
         //userNameTextView = (TextView)navigationView.getHeaderView(0).findViewById(R.id.userNameTextView);
 
@@ -116,11 +119,14 @@ public class MainActivity extends AppCompatActivity
             String firstName = sharedPreferences.getString(Constants.PREF_USER_FIRSTNAME, "");
             String lastName = sharedPreferences.getString(Constants.PREF_USER_LASTNAME, "");
 
+            userLoginTextView.setText(firstName+" "+lastName);
+
             //userNameTextView.setText(firstName+" "+lastName);
 
         }else{
             //profileTextView.setText("Public");
             //userNameTextView.setText("");
+            userLoginTextView.setText("");
             showOptionsPublic(navigationView);
         }
 
